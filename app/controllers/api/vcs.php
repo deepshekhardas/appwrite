@@ -329,6 +329,24 @@ $createGitDeployments = function (GitHub $github, string $providerInstallationId
                 'activate' => $activate,
             ])));
 
+            // Cancel previous pending deployments for same resource
+            $previousDeployments = $authorization->skip(fn () => $dbForProject->find('deployments', [
+                Query::equal('resourceId', [$resourceId]),
+                Query::equal('resourceType', [$resourceCollection]),
+                Query::notEqual('$id', $deploymentId),
+                Query::equal('status', ['waiting', 'processing']),
+                Query::orderDesc('$createdAt'),
+            ]));
+
+            foreach ($previousDeployments as $prevDeployment) {
+                $prevDeployment->setAttribute('status', 'canceled');
+                $authorization->skip(fn () => $dbForProject->updateDocument(
+                    'deployments',
+                    $prevDeployment->getId(),
+                    $prevDeployment
+                ));
+            }
+
             $resource = $resource
                 ->setAttribute('latestDeploymentId', $deployment->getId())
                 ->setAttribute('latestDeploymentInternalId', $deployment->getSequence())
