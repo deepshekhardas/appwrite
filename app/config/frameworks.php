@@ -312,6 +312,23 @@ return [
             ],
         ]
     ],
+    'kobweb' => [
+        'key' => 'kobweb',
+        'name' => 'Kobweb',
+        'screenshotSleep' => 5000,
+        'buildRuntime' => 'java-21',
+        'runtimes' => $templateRuntimes['JAVA'] ?? [],
+        'adapters' => [
+            'static' => [
+                'key' => 'static',
+                'buildCommand' => './gradlew kobwebExport',
+                'installCommand' => '',
+                'outputDirectory' => './site',
+                'startCommand' => 'bash helpers/server.sh',
+                'fallbackFile' => 'index.html'
+            ],
+        ],
+    ],
     'other' => [
         'key' => 'other',
         'name' => 'Other',
