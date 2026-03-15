@@ -359,7 +359,12 @@ class Functions extends Action
         $user ??= new Document();
         $functionId = $function->getId();
         $deploymentId = $function->getAttribute('deploymentId', '');
-        $spec = Config::getParam('specifications')[$function->getAttribute('specification', APP_COMPUTE_SPECIFICATION_DEFAULT)];
+        $specification = $function->getAttribute('specification');
+        if (empty($specification)) {
+            $specification = APP_COMPUTE_SPECIFICATION_DEFAULT;
+        }
+
+        $spec = Config::getParam('specifications')[$specification];
 
         $log->addTag('deploymentId', $deploymentId);
 
