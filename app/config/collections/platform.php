@@ -973,7 +973,7 @@ return [
                 'size' => 16384,
                 'signed' => true,
                 'required' => false,
-                'default' => '[]',
+                'default' => [],
                 'array' => false,
                 'filters' => ['json'],
             ],
