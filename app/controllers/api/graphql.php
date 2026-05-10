@@ -26,7 +26,7 @@ use Utopia\Validator\JSON;
 use Utopia\Validator\Text;
 
 App::init()
-    ->groups(['graphql'])
+    ->groups(['api', 'web', 'graphql'])
     ->inject('project')
     ->inject('authorization')
     ->action(function (Document $project, Authorization $authorization) {
@@ -41,7 +41,7 @@ App::init()
 
 App::get('/v1/graphql')
     ->desc('GraphQL endpoint')
-    ->groups(['graphql'])
+    ->groups(['api', 'web', 'graphql'])
     ->label('scope', 'graphql')
     ->label('sdk', new Method(
         namespace: 'graphql',
@@ -88,7 +88,7 @@ App::get('/v1/graphql')
 
 App::post('/v1/graphql/mutation')
     ->desc('GraphQL endpoint')
-    ->groups(['graphql'])
+    ->groups(['api', 'web', 'graphql'])
     ->label('scope', 'graphql')
     ->label('sdk', new Method(
         namespace: 'graphql',
@@ -139,7 +139,7 @@ App::post('/v1/graphql/mutation')
 
 App::post('/v1/graphql')
     ->desc('GraphQL endpoint')
-    ->groups(['graphql'])
+    ->groups(['api', 'web', 'graphql'])
     ->label('scope', 'graphql')
     ->label('sdk', new Method(
         namespace: 'graphql',
