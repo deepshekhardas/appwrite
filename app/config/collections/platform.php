@@ -966,7 +966,7 @@ return [
                 'array' => false,
                 'filters' => [],
             ],
-            [
+[
                 '$id' => ID::custom('headers'),
                 'type' => Database::VAR_STRING,
                 'format' => '',
@@ -975,7 +975,7 @@ return [
                 'required' => false,
                 'default' => '[]',
                 'array' => false,
-                'filters' => ['json'],
+                'filters' => ['json', 'encrypt'],
             ],
         ],
         'indexes' => [
