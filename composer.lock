@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b645c7da1728536497fe8186b158f9c6",
+    "content-hash": "8f2c705d106f2887c7a98fda31f23008",
     "packages": [
         {
             "name": "adhocore/jwt",
@@ -3510,16 +3510,16 @@
         },
         {
             "name": "utopia-php/audit",
-            "version": "2.3.2",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/audit.git",
-                "reference": "e7b4049fc2ee9be34bcc18771fa593db3b0e9fe3"
+                "reference": "f3174d398abd6f9c569c599ae2922bce75de5944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/audit/zipball/e7b4049fc2ee9be34bcc18771fa593db3b0e9fe3",
-                "reference": "e7b4049fc2ee9be34bcc18771fa593db3b0e9fe3",
+                "url": "https://api.github.com/repos/utopia-php/audit/zipball/f3174d398abd6f9c569c599ae2922bce75de5944",
+                "reference": "f3174d398abd6f9c569c599ae2922bce75de5944",
                 "shasum": ""
             },
             "require": {
@@ -3554,9 +3554,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/audit/issues",
-                "source": "https://github.com/utopia-php/audit/tree/2.3.2"
+                "source": "https://github.com/utopia-php/audit/tree/2.4.0"
             },
-            "time": "2026-05-14T04:00:37+00:00"
+            "time": "2026-05-18T04:48:30+00:00"
         },
         {
             "name": "utopia-php/auth",
