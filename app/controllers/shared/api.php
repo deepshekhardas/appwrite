@@ -189,7 +189,7 @@ Http::init()
                 $user = new User([
                     '$id' => '',
                     'status' => true,
-                    'type' => ACTIVITY_TYPE_KEY_PROJECT,
+                    'type' => ACTOR_TYPE_KEY_PROJECT,
                     'email' => 'app.' . $project->getId() . '@service.' . $request->getHostname(),
                     'password' => '',
                     'name' => $apiKey->getName(),
@@ -261,9 +261,9 @@ Http::init()
 
                 $userClone = clone $user;
                 $userClone->setAttribute('type', match ($apiKey->getType()) {
-                    API_KEY_STANDARD => ACTIVITY_TYPE_KEY_PROJECT,
-                    API_KEY_ACCOUNT => ACTIVITY_TYPE_KEY_ACCOUNT,
-                    default => ACTIVITY_TYPE_KEY_ORGANIZATION,
+                    API_KEY_STANDARD => ACTOR_TYPE_KEY_PROJECT,
+                    API_KEY_ACCOUNT => ACTOR_TYPE_KEY_ACCOUNT,
+                    default => ACTOR_TYPE_KEY_ORGANIZATION,
                 });
                 $auditContext->user = $userClone;
             }
@@ -615,7 +615,7 @@ Http::init()
             $userClone = clone $user;
             // $user doesn't support `type` and can cause unintended effects.
             if (empty($user->getAttribute('type'))) {
-                $userClone->setAttribute('type', $mode === APP_MODE_ADMIN ? ACTIVITY_TYPE_ADMIN : ACTIVITY_TYPE_USER);
+                $userClone->setAttribute('type', $mode === APP_MODE_ADMIN ? ACTOR_TYPE_ADMIN : ACTOR_TYPE_USER);
             }
             $auditContext->user = $userClone;
         }
@@ -929,7 +929,7 @@ Http::shutdown()
             $userClone = clone $user;
             // $user doesn't support `type` and can cause unintended effects.
             if (empty($user->getAttribute('type'))) {
-                $userClone->setAttribute('type', $mode === APP_MODE_ADMIN ? ACTIVITY_TYPE_ADMIN : ACTIVITY_TYPE_USER);
+                $userClone->setAttribute('type', $mode === APP_MODE_ADMIN ? ACTOR_TYPE_ADMIN : ACTOR_TYPE_USER);
             }
             $auditContext->user = $userClone;
         } elseif ($auditContext->user === null || $auditContext->user->isEmpty()) {
@@ -944,7 +944,7 @@ Http::shutdown()
             $user = new User([
                 '$id' => '',
                 'status' => true,
-                'type' => ACTIVITY_TYPE_GUEST,
+                'type' => ACTOR_TYPE_GUEST,
                 'email' => 'guest.' . $project->getId() . '@service.' . $request->getHostname(),
                 'password' => '',
                 'name' => 'Guest',
